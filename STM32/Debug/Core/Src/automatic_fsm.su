@@ -1,0 +1,5 @@
+../Core/Src/automatic_fsm.c:20:5:isCmdEqualTo0	24	static
+../Core/Src/automatic_fsm.c:29:5:isCmdEqualToRST	24	static
+../Core/Src/automatic_fsm.c:38:5:isCmdEqualToOK	24	static
+../Core/Src/automatic_fsm.c:47:6:cmd_parser_fsm	16	static
+../Core/Src/automatic_fsm.c:69:6:uart_comms_fsm	64	static
