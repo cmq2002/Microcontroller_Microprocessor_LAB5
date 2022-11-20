@@ -108,14 +108,9 @@ int main(void)
   MX_ADC1_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  HAL_UART_Receive_IT(&huart2, &temp, 1);
+  HAL_UART_Receive_IT(&huart2, &buffer_byte, 1);
   HAL_ADC_Start(&hadc1);
 
-  // Generate ADC value
-//  uint32_t ADC_value = 0;
-//  char str[50];
-//  setTimer1(100);
-//  int timeOutCounter = 3;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -123,22 +118,10 @@ int main(void)
   while (1)
   {
 	  if (buffer_flag == 1){
-		  cmd_parser_fsm(&buffer_byte, sizeof(buffer_byte));
+		  cmd_parser_fsm(buffer_byte);
 		  buffer_flag = 0;
 	  }
 	  uart_comms_fsm();
-
-//	  while (timeOutCounter > 0){
-//		  if (timer1_flag == 1){
-//			  timeOutCounter--;
-//			  setTimer1(100);
-//		  }
-//	  }
-//
-//	  if (timeOutCounter <= 0) timeOutCounter = 3;
-//	 ADC_value = HAL_ADC_GetValue(&hadc1);
-//	 HAL_UART_Transmit(&huart2, (void *)str, sprintf(str, "!ADC=%ld#\r\n",ADC_value), 1000);
-//	 HAL_UART_Transmit(&huart2, str, sprintf(str, "%s","Hello\r\n"), 1000);
 	  HAL_Delay(3000);
     /* USER CODE END WHILE */
 

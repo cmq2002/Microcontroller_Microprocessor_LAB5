@@ -23,13 +23,11 @@
 
 #define MAX_CMD_SIZE 3
 
-int isCmdEqualTo0(uint8_t *buffer, int size);
+int isCmdEqualToRST(uint8_t cmd[]);
 
-int isCmdEqualToRST(uint8_t *buffer, int size);
+int isCmdEqualToOK(uint8_t cmd[]);
 
-int isCmdEqualToOK(uint8_t *buffer, int size);
-
-void cmd_parser_fsm(uint8_t *buffer_byte, int size);
+void cmd_parser_fsm(uint8_t buffer_byte);
 
 void uart_comms_fsm();
 
