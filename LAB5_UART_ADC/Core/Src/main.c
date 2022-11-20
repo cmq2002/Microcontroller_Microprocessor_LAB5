@@ -22,6 +22,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "software_timer.h"
 #include "automatic_fsm.h"
 /* USER CODE END Includes */
@@ -33,7 +35,6 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define MAX_BUFFER_SIZE 20
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -61,13 +62,9 @@ static void MX_USART2_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-uint8_t buffer_byte = 0;
-uint8_t buffer[MAX_BUFFER_SIZE];
-uint8_t index_buffer = 0;
-uint8_t buffer_flag = 0;
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 	if (huart->Instance == USART2){
-//		HAL_UART_Transmit(&huart2, &temp, 1, 100);
+		HAL_UART_Transmit(&huart2, &buffer_byte, 1, 50);
 		buffer[index_buffer] = buffer_byte;
 		index_buffer++;
 		if (index_buffer == MAX_BUFFER_SIZE) index_buffer = 0;
@@ -118,7 +115,7 @@ int main(void)
   while (1)
   {
 	  if (buffer_flag == 1){
-		  cmd_parser_fsm(buffer_byte);
+		  cmd_parser_fsm();
 		  buffer_flag = 0;
 	  }
 	  uart_comms_fsm();
