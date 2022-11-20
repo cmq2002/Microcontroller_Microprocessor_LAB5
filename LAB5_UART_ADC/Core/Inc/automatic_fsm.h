@@ -11,13 +11,17 @@
 #include "main.h"
 #include <stdio.h>
 
-#define MAX_CMD_SIZE 5
-
 #define INIT 0
 
-#define READ 1
+#define READING 1
 
-#define END 2
+#define STOP 2
+
+#define STARTING_BYTE '!'
+
+#define ENDING_BYTE '#'
+
+#define MAX_CMD_SIZE 3
 
 int isCmdEqualTo0(uint8_t *buffer, int size);
 
@@ -25,7 +29,7 @@ int isCmdEqualToRST(uint8_t *buffer, int size);
 
 int isCmdEqualToOK(uint8_t *buffer, int size);
 
-void cmd_parser_fsm(uint8_t *buffer, int size);
+void cmd_parser_fsm(uint8_t *buffer_byte, int size);
 
 void uart_comms_fsm();
 

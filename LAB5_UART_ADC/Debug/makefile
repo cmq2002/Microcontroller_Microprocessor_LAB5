@@ -66,8 +66,8 @@ all: main-build
 main-build: LAB5_UART_ADC.elf secondary-outputs
 
 # Tool invocations
-LAB5_UART_ADC.elf LAB5_UART_ADC.map: $(OBJS) $(USER_OBJS) F:\MCU_MPU_LAB\Microcontroller_Microprocessor_LAB5\STM32\STM32F103C6UX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "LAB5_UART_ADC.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"F:\MCU_MPU_LAB\Microcontroller_Microprocessor_LAB5\STM32\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LAB5_UART_ADC.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+LAB5_UART_ADC.elf LAB5_UART_ADC.map: $(OBJS) $(USER_OBJS) F:\MCU_MPU_LAB\Microcontroller_Microprocessor_LAB5\LAB5_UART_ADC\STM32F103C6UX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "LAB5_UART_ADC.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"F:\MCU_MPU_LAB\Microcontroller_Microprocessor_LAB5\LAB5_UART_ADC\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LAB5_UART_ADC.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
