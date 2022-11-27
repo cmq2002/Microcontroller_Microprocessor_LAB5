@@ -9,6 +9,7 @@
 #define INC_AUTOMATIC_FSM_H_
 
 #include "main.h"
+#include "software_timer.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -17,11 +18,23 @@
 
 #define READING 1
 
+#define SEND 10
+
 #define STOP 2
 
-#define STARTING_BYTE '!'
+#define RECEIVE_R 3
 
-#define ENDING_BYTE '#'
+#define RECEIVE_S 4
+
+#define RECEIVE_T 5
+
+#define RECEIVE_O 6
+
+#define RECEIVE_K 7
+
+#define RST 8
+
+#define OK 9
 
 #define MAX_CMD_SIZE 3
 
@@ -31,10 +44,6 @@ extern uint8_t buffer_byte;
 extern uint8_t buffer[MAX_BUFFER_SIZE];
 extern uint8_t index_buffer;
 extern uint8_t buffer_flag;
-
-int isCmdEqualToRST(uint8_t cmd[]);
-
-int isCmdEqualToOK(uint8_t cmd[]);
 
 void cmd_parser_fsm();
 
