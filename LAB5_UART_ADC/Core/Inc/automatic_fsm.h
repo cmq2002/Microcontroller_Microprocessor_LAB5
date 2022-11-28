@@ -18,8 +18,6 @@
 
 #define READING 1
 
-#define SEND 10
-
 #define STOP 2
 
 #define RECEIVE_R 3
@@ -36,7 +34,7 @@
 
 #define OK 9
 
-#define MAX_CMD_SIZE 3
+#define MAX_CMD_SIZE 5
 
 #define MAX_BUFFER_SIZE 30
 

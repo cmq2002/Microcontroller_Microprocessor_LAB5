@@ -66,14 +66,14 @@ static void MX_TIM2_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
-	HAL_UART_Transmit(&huart2, &buffer_byte, 1, 500);
 	if (huart->Instance == USART2){
+		HAL_UART_Transmit(&huart2, &buffer_byte, 1, 500);
 		buffer[index_buffer] = buffer_byte;
 		index_buffer++;
 		if (index_buffer == MAX_BUFFER_SIZE) index_buffer = 0;
 		buffer_flag = 1;
+		HAL_UART_Receive_IT(&huart2, &buffer_byte, 1);
 	}
-	HAL_UART_Receive_IT(&huart2, &buffer_byte, 1);
 }
 /* USER CODE END 0 */
 
@@ -112,8 +112,6 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim2);
   HAL_UART_Receive_IT(&huart2, &buffer_byte, 1);
   HAL_ADC_Start(&hadc1);
-//  int ADC_value = 0;
-//  char str[50];
   setTimer2(50);
   /* USER CODE END 2 */
 
@@ -130,11 +128,6 @@ int main(void)
 		  buffer_flag = 0;
 	  }
 	  uart_comms_fsm();
-//	  ADC_value = HAL_ADC_GetValue(&hadc1);
-//	  HAL_UART_Transmit(&huart2, (void *)str, sprintf(str, "!ADC=%d#\r\n",ADC_value), 1000);
-
-//	  HAL_Delay(3000);
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
