@@ -20,15 +20,15 @@
 
 #define STOP 2
 
-#define RECEIVE_R 3
-
-#define RECEIVE_S 4
-
-#define RECEIVE_T 5
-
-#define RECEIVE_O 6
-
-#define RECEIVE_K 7
+//#define RECEIVE_R 3
+//
+//#define RECEIVE_S 4
+//
+//#define RECEIVE_T 5
+//
+//#define RECEIVE_O 6
+//
+//#define RECEIVE_K 7
 
 #define RST 8
 
