@@ -34,7 +34,7 @@
 
 #define OK 9
 
-#define MAX_CMD_SIZE 5
+#define MAX_CMD_SIZE 3
 
 #define MAX_BUFFER_SIZE 30
 
